@@ -5,6 +5,7 @@ const express = require("express");
 const AppError = require("./utils/appError");
 const rateLimit = require("express-rate-limit");
 const userRouter = require("./routes/userRoutes");
+const taskRouter = require("./routes/taskRouter");
 const mongoSanitize = require("express-mongo-sanitize");
 const projectRouter = require("./routes/projectsRoutes");
 const globalErrorHandler = require("./controllers/errorController");
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/projects", projectRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/tasks", taskRouter);
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });

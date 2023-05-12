@@ -1,77 +1,18 @@
 const Project = require("../models/projectModel.js");
-const APIFeatures = require("./../utils/apiFeatures.js");
-const catchAsync = require("./../utils/catchAsync.js");
-const AppError = require("./../utils/appError.js");
+const factory = require("./handlerFactory.js");
 
-exports.getAllProjects = catchAsync(async (req, res, next) => {
-  const features = new APIFeatures(Project.find(), req.query)
-    .sort()
-    .limitFields()
-    .paginate();
-  const projects = await features.query;
+exports.setAdminMembers = (req, res, next) => {
+  if (!req.body.admin) req.body.admin = [req.user.id];
+  if (!req.body.members) req.body.members = [];
+  next();
+};
 
-  res.status(200).json({
-    status: "success",
-    results: projects.length,
-    data: {
-      projects,
-    },
-  });
-});
+exports.getAllProjects = factory.getAll(Project);
 
-exports.createProject = catchAsync(async (req, res, next) => {
-  const newProject = await Project.create(req.body);
+exports.getProject = factory.getOne(Project, { path: "task" });
 
-  res.status(200).json({
-    status: "success",
-    data: {
-      project: newProject,
-    },
-  });
-});
+exports.createProject = factory.createOne(Project);
 
-exports.getProject = catchAsync(async (req, res, next) => {
-  const project = await Project.findById(req.params.id);
+exports.updateProject = factory.updateOne(Project);
 
-  if (!project) {
-    return next(new AppError("No project found with that ID", 404));
-  }
-
-  res.status(200).json({
-    status: "sucess",
-    data: {
-      project,
-    },
-  });
-});
-
-exports.updateProject = catchAsync(async (req, res, next) => {
-  const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runvalidators: true,
-  });
-
-  if (!project) {
-    return next(new AppError("No project found with that ID", 404));
-  }
-
-  return res.status(200).json({
-    status: "success",
-    data: {
-      project,
-    },
-  });
-});
-
-exports.deleteProject = catchAsync(async (req, res, next) => {
-  const project = await Project.findByIdAndDelete(req.params.id);
-
-  if (!project) {
-    return next(new AppError("No project found with that ID", 404));
-  }
-
-  res.status(204).json({
-    status: "success",
-    data: null,
-  });
-});
+exports.deleteProject = factory.deleteOne(Project);

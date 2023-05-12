@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const sendEmail = require("./../utils/email");
 const User = require("./../models/userModel");
+const Task = require("./../models/taskModel");
 const AppError = require("./../utils/appError");
 const Project = require("../models/projectModel");
 const catchAsync = require("./../utils/catchAsync");
@@ -35,6 +36,7 @@ const createSendToken = (user, statusCode, res) => {
     },
   });
 };
+
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
@@ -97,13 +99,43 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.restricTo = catchAsync(async (req, res, next) => {
-  const project = await Project.findById(req.params.id);
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    // roles ['admin', 'lead-guide']. role='user'
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have permission to perform this action", 403)
+      );
+    }
 
-  if (project.admin.filter((el) => el === req.user.id).length < 1) {
-    return next(
-      new AppError("You do not have permission to perform this action.", 403)
-    );
+    next();
+  };
+};
+
+exports.restricToProject = catchAsync(async (req, res, next) => {
+  const project = await Project.findById(req.body.project || req.params.id);
+  if (req.user.role !== "admin") {
+    if (
+      !project.admin.filter((el) => el._id.toString() === req.user.id).length ||
+      !project.members.filter((el) => el._id.toString() === req.user.id).length
+    ) {
+      return next(
+        new AppError("You do not have permission to perform this action.", 403)
+      );
+    }
+  }
+  next();
+});
+
+exports.restricToTask = catchAsync(async (req, res, next) => {
+  const task = await Task.findById(req.params.id);
+
+  if (req.user.role !== "admin") {
+    if (task?.user._id.toString() !== req.user.id) {
+      return next(
+        new AppError("You do not have permission to perform this action.", 403)
+      );
+    }
   }
   next();
 });
@@ -180,4 +212,29 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save();
 
   createSendToken(user, 200, res);
+});
+
+exports.updateMembers = catchAsync(async (req, res, next) => {
+  const project = await Project.findById(req.params.id);
+
+  if (!project) {
+    return next(new AppError("No document found with that ID", 404));
+  }
+
+  if (!req.body.member && !req.body.admin) {
+    return next(new AppError("No params found with that ID", 404));
+  }
+
+  if(req.body.member) project.members = [...project.members, req.body.member];
+  if(req.body.admin) project.admin = [...project.admin, req.body.admin];
+  console.log(project.members);
+  console.log(project.admin)
+  //await project.save();
+
+  return res.status(200).json({
+    status: "success",
+    data: {
+      project,
+    },
+  });
 });
