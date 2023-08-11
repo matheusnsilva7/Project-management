@@ -39,14 +39,6 @@ if (form) {
 if (containerSettingsBtn) {
   containerSettingsBtn.addEventListener("click", () => {
     settingsContainer.classList.toggle("setting-container-btn");
-
-    if (settingsContainer.classList.contains("setting-container-btn")) {
-      settingsBtn.innerHTML =
-        '<span class="material-symbols-outlined">keyboard_control_key</span>';
-    } else {
-      settingsBtn.innerHTML =
-        '<span class="material-symbols-outlined">expand_more</span>';
-    }
   });
 }
 
@@ -111,6 +103,7 @@ if (newTask) {
 
 if (background) {
   background.addEventListener("click", () => {
+    console.log("hey");
     if (formNewProject) formNewProject.classList.remove("active");
     else if (formNewTask) formNewTask.classList.remove("active");
   });
@@ -321,20 +314,13 @@ if (containerTask) {
         document
           .querySelector(".background")
           .addEventListener("click", () => (information.innerHTML = ""));
-      }
 
-      document
-        .querySelector(".taskSettings")
-        .addEventListener("click", async (e) => {
-          const res = await axios({
-            method: "GET",
-            url: `/api/v1/tasks/${e.target.parentElement.parentElement.id}`,
-          });
-
-          const data = res.data.data.data;
-
-          information.innerHTML = "";
-          information.innerHTML += `
+        console.log(data);
+        document
+          .querySelector(".taskSettings")
+          .addEventListener("click", async (e) => {
+            information.innerHTML = "";
+            information.innerHTML += `
         <div class="formTask active">
             <div class="background"></div>
                 <form class="taskForm" id=${data.id}>
@@ -390,84 +376,94 @@ if (containerTask) {
                 </form>
         </div>`;
 
-          document
-            .querySelector(".background")
-            .addEventListener("click", () => (information.innerHTML = ""));
+            document
+              .querySelector(".background")
+              .addEventListener("click", () => (information.innerHTML = ""));
 
-          document
-            .querySelector(".deleteTask")
-            .addEventListener("click", async (e) => {
-              try {
-                const res = await axios({
-                  method: "DELETE",
-                  url: `/api/v1/tasks/${e.target.parentElement.parentElement.id}`,
-                });
+            document
+              .querySelector(".deleteTask")
+              .addEventListener("click", async (e) => {
+                try {
+                  const res = await axios({
+                    method: "DELETE",
+                    url: `/api/v1/tasks/${e.target.parentElement.parentElement.id}`,
+                  });
 
-                showAlert("success", `Task deleted successfully!`);
+                  showAlert("success", `Task deleted successfully!`);
 
-                window.setTimeout(() => {
-                  location.assign(
-                    `/project/${window.location.href.split("/")[4]}`
-                  );
-                }, 800);
-              } catch (err) {
-                showAlert("error", err.response.data.message);
-              }
-            });
-
-          document
-            .querySelector(".taskForm")
-            .addEventListener("submit", async(e) => {
-              try {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                const data = Object.fromEntries(formData);
-                const res = await axios({
-                  method: "PATCH",
-                  url: `/api/v1/tasks/${e.target.id}`,
-                  data,
-                });
-
-                if (res.data.status === "success") {
-                  showAlert("success", `successfully update task!`);
-        
                   window.setTimeout(() => {
-                    location.reload(true);
+                    location.assign(
+                      `/project/${window.location.href.split("/")[4]}`
+                    );
                   }, 800);
+                } catch (err) {
+                  showAlert("error", err.response.data.message);
                 }
+              });
 
-              } catch (err) {
-                showAlert("error", err.response.data.message);
-              }
-            });
-        });
+            document
+              .querySelector(".taskForm")
+              .addEventListener("submit", async (e) => {
+                try {
+                  e.preventDefault();
+                  const formData = new FormData(e.target);
+                  const data = Object.fromEntries(formData);
+                  const res = await axios({
+                    method: "PATCH",
+                    url: `/api/v1/tasks/${e.target.id}`,
+                    data,
+                  });
+
+                  if (res.data.status === "success") {
+                    showAlert("success", `successfully update task!`);
+
+                    window.setTimeout(() => {
+                      location.reload(true);
+                    }, 800);
+                  }
+                } catch (err) {
+                  showAlert("error", err.response.data.message);
+                }
+              });
+          });
+      }
     });
   });
 }
-document.querySelector(".deleteProject").addEventListener("click", () => {
-  containerDelete.classList.add("deleteActive");
-});
-document.querySelector(".deleteBackground").addEventListener("click", () => {
-  containerDelete.classList.remove("deleteActive");
-});
 
-document.querySelector(".no").addEventListener("click", () => {
-  containerDelete.classList.remove("deleteActive");
-});
+if (document.querySelector(".deleteProject")) {
+  document.querySelector(".deleteProject").addEventListener("click", () => {
+    containerDelete.classList.add("deleteActive");
+  });
+}
 
-document.querySelector(".yes").addEventListener("click", async () => {
-  try {
-    const res = await axios({
-      method: "DELETE",
-      url: `/api/v1/projects/${window.location.href.split("/")[4]}`,
-    });
+if (document.querySelector(".deleteBackground")) {
+  document.querySelector(".deleteBackground").addEventListener("click", () => {
+    containerDelete.classList.remove("deleteActive");
+  });
+}
 
-    showAlert("success", `successfully deleted Project!`);
+if (document.querySelector(".no")) {
+  document.querySelector(".no").addEventListener("click", () => {
+    containerDelete.classList.remove("deleteActive");
+  });
+}
 
-    window.setTimeout(() => {
-      location.assign("/projects");
-    }, 800);
-  } catch (err) {
-    showAlert("error", err.response.data.message);
-  }
-});
+if (document.querySelector(".yes")) {
+  document.querySelector(".yes").addEventListener("click", async () => {
+    try {
+      const res = await axios({
+        method: "DELETE",
+        url: `/api/v1/projects/${window.location.href.split("/")[4]}`,
+      });
+
+      showAlert("success", `successfully deleted Project!`);
+
+      window.setTimeout(() => {
+        location.assign("/projects");
+      }, 800);
+    } catch (err) {
+      showAlert("error", err.response.data.message);
+    }
+  });
+}

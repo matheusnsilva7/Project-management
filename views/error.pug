@@ -1,9 +1,21 @@
-extends login
+doctype html
+html(lang="en")
+    head
+        title Project management - #{title}
+        link(rel="stylesheet" href="/css/error.css")
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link( rel="icon" type="image/png" href="/img/Management-logos_transparent.png")
+        link( rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" )
 
-block content
-    .error 
-        .error__title 
-            h2.heading-secondary.heading-secondary--error Uh oh! Something went wrong!
-            h2.error__emoji 😢 🤯
-        .error__msg= msg
-        a(href="/").return Home
+    body
+        .container-body
+            include _menu
+            .container-base
+                include _header
+                .error 
+                    .error__title 
+                        h2.heading-secondary.heading-secondary--error Uh oh! Something went wrong!
+                        h2.error__emoji 😢 🤯
+                    .error__msg= msg
+                    a(href="/").return Home

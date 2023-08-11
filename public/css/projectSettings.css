@@ -1,3 +1,40 @@
+@import "./globals.css";
+@import "./header.css";
+@import "./menu.css";
+
+input {
+  width: 340px;
+  height: 45px;
+  display: block;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  background: #00000015;
+  margin: 1.3rem 0;
+  padding: 1rem;
+}
+textarea {
+  width: 365px;
+  display: block;
+  border: none;
+  outline: none;
+  background: #e8e8e8;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  color: #505050;
+}
+label {
+  font-size: 1.3rem;
+}
+.update {
+  width: 21rem;
+  background: #7f99bd;
+  display: block;
+  height: 40px;
+  border: none;
+  color: white;
+  margin: 0 auto 2.2rem;
+}
 .settingsProject-container {
   width: 100%;
 }
@@ -110,6 +147,6 @@
   border: none;
   padding: 0.5rem 1rem;
 }
-.deleteActive{
-  display: grid
+.deleteActive {
+  display: grid;
 }

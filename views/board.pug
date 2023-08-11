@@ -1,78 +1,91 @@
-extends  base
+doctype html
+html(lang="en")
+    head
+        title Project management - #{title}
+        link(rel="stylesheet" href="/css/board.css")
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link( rel="icon" type="image/png" href="/img/Management-logos_transparent.png")
+        link( rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" )
 
-block content
-    .board-container 
-        .containerboard
-            .review 
-                h3 Review
-                .add-task 
-                    span.material-symbols-outlined add
-                .column#Review
-                    each task in review
-                        .container-completed(draggable= "true" id=task.id)
-                            h4= task.name
-                            p= task.description
-                            div
-                                h5(class=`${task.difficult}`)= task.difficult
-                                h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
-            .progress 
-                h3 Progress
-                .column#Progress
-                    each task in progress
-                        .container-completed(draggable= "true" id=task.id) 
-                            h4= task.name
-                            p= task.description
-                            div
-                                h5(class=`${task.difficult}`)= task.difficult
-                                h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
-            .completed
-                h3 Completed
-                .column#Completed
-                    each task in completed
-                        .container-completed(draggable= "true" id=task.id) 
-                            h4= task.name
-                            p= task.description
-                            div
-                                h5(class=`${task.difficult}`)= task.difficult
-                                h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
-            .deferred
-                h3 Deferred
-                .column#Deferred
-                    each task in deferred
-                        .container-completed(draggable= "true" id=task.id) 
-                            h4= task.name
-                            p= task.description
-                            div
-                                h5(class=`${task.difficult}`)= task.difficult
-                                h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
-    .information
-    .formTask
-        .background
-        form.taskForm
-            h2 New Task
-            label(for="taskName") Name
-            input#taskName(type="text" name="name")
-            label(for="taskDescription") Description
-            textarea#taskDescription(name="description", cols="30", rows="4" )
-            label(for="taskDate") Due date
-            input#taskDate(type="date" name="dueDate")
-            label difficult
-            div.formDiv
-                input(type="radio" id="easy" name="difficult" value="Easy" checked) 
-                label(for="easy") Easy
-                input(type="radio" id="medium" name="difficult" value="Medium" ) 
-                label(for="medium") Medium
-                input(type="radio" id="hard" name="difficult" value="Hard" )
-                label(for="hard") Hard
-            label Status 
-            div.formDiv
-                input(type="radio" id="review" name="status" value="Review" checked)
-                label(for="review") Review
-                input(type="radio" id="progress" name="status" value="Progress")
-                label(for="progress") Progress
-                input(type="radio" id="completed" name="status" value="Completed")
-                label(for="completed") Completed
-                input(type="radio" id="deferred" name="status" value="Deferred")
-                label(for="deferred") Deferred
-            button Create
+    body
+        .container-body
+            include _menu
+            .container-base
+                include _header
+                .board-container 
+                    .containerboard
+                        .review 
+                            h3 Review
+                            .add-task 
+                                span.material-symbols-outlined add
+                            .column#Review
+                                each task in review
+                                    .container-completed(draggable= "true" id=task.id)
+                                        h4= task.name
+                                        p= task.description
+                                        div
+                                            h5(class=`${task.difficult}`)= task.difficult
+                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                        .progress 
+                            h3 Progress
+                            .column#Progress
+                                each task in progress
+                                    .container-completed(draggable= "true" id=task.id) 
+                                        h4= task.name
+                                        p= task.description
+                                        div
+                                            h5(class=`${task.difficult}`)= task.difficult
+                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                        .completed
+                            h3 Completed
+                            .column#Completed
+                                each task in completed
+                                    .container-completed(draggable= "true" id=task.id) 
+                                        h4= task.name
+                                        p= task.description
+                                        div
+                                            h5(class=`${task.difficult}`)= task.difficult
+                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                        .deferred
+                            h3 Deferred
+                            .column#Deferred
+                                each task in deferred
+                                    .container-completed(draggable= "true" id=task.id) 
+                                        h4= task.name
+                                        p= task.description
+                                        div
+                                            h5(class=`${task.difficult}`)= task.difficult
+                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                .information
+                .formTask
+                    .background
+                    form.taskForm
+                        h2 New Task
+                        label(for="taskName") Name
+                        input#taskName(type="text" name="name")
+                        label(for="taskDescription") Description
+                        textarea#taskDescription(name="description", cols="30", rows="4" )
+                        label(for="taskDate") Due date
+                        input#taskDate(type="date" name="dueDate")
+                        label difficult
+                        div.formDiv
+                            input(type="radio" id="easy" name="difficult" value="Easy" checked) 
+                            label(for="easy") Easy
+                            input(type="radio" id="medium" name="difficult" value="Medium" ) 
+                            label(for="medium") Medium
+                            input(type="radio" id="hard" name="difficult" value="Hard" )
+                            label(for="hard") Hard
+                        label Status 
+                        div.formDiv
+                            input(type="radio" id="review" name="status" value="Review" checked)
+                            label(for="review") Review
+                            input(type="radio" id="progress" name="status" value="Progress")
+                            label(for="progress") Progress
+                            input(type="radio" id="completed" name="status" value="Completed")
+                            label(for="completed") Completed
+                            input(type="radio" id="deferred" name="status" value="Deferred")
+                            label(for="deferred") Deferred
+                        button Create
+        script(src="/js/bundle.js")
 

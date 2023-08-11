@@ -1,29 +1,42 @@
-extends  base
+doctype html
+html(lang="en")
+    head
+        title Project management - #{title}
+        link(rel="stylesheet" href="/css/projects.css")
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link( rel="icon" type="image/png" href="/img/Management-logos_transparent.png")
+        link( rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" )
 
-block content
-    .projects
-        .projects-container
-            .add-card 
-                span.material-symbols-outlined add
-            each project in projectsAdmin
-                a(href=`/project/${project.id}`).project-card
-                    span(class="material-symbols-outlined") group
-                    h2= project.name
-                    h3= project.description
+    body
+        .container-body
+            include _menu
+            .container-base
+                include _header
+                .projects
+                    .projects-container
+                        .add-card 
+                            span.material-symbols-outlined add
+                        each project in projectsAdmin
+                            a(href=`/project/${project.id}`).project-card
+                                span(class="material-symbols-outlined") group
+                                h2= project.name
+                                h3= project.description
 
-            each project in projectsMembers
-                a(href=`/project/${project.id}`).project-card
-                    span(class="material-symbols-outlined").green groups
-                    h2= project.name
-                    h3= project.description
-            if projectsAdmin.length <= 0 && projectsMembers.length <= 0
-                p.notFound No project found
-    .formProject 
-        .background
-        form.projectform
-            h2 New Project
-            label(for="projectName") Name
-            input(type="text" id="projectName" placeholder="Name")
-            label(for="projectDescription") Description
-            textarea#projectDescription(name="Description", cols="30", rows="8" ) 
-            button Create
+                        each project in projectsMembers
+                            a(href=`/project/${project.id}`).project-card
+                                span(class="material-symbols-outlined").green groups
+                                h2= project.name
+                                h3= project.description
+                        if projectsAdmin.length <= 0 && projectsMembers.length <= 0
+                            p.notFound No project found
+                .formProject 
+                    .background
+                    form.projectform
+                        h2 New Project
+                        label(for="projectName") Name
+                        input(type="text" id="projectName" placeholder="Name")
+                        label(for="projectDescription") Description
+                        textarea#projectDescription(name="Description", cols="30", rows="8" ) 
+                        button Create
+        script(src="/js/bundle.js")

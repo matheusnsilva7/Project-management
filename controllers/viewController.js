@@ -3,13 +3,6 @@ const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 const { ObjectId } = require("mongodb");
 
-exports.getOverview = (req, res) => {
-  res.status(200).render("base", {
-    tour: "Project",
-    user: "user",
-  });
-};
-
 exports.getLogging = (req, res) => {
   if (res.locals.user) {
     res.redirect("/projects");
@@ -42,13 +35,6 @@ exports.getProjects = async (req, res, next) => {
     title: "Projects",
     projectsAdmin,
     projectsMembers,
-  });
-};
-
-exports.getNewProject = (req, res) => {
-  res.status(200).render("newProject", {
-    title: "Log In",
-    user: "user",
   });
 };
 

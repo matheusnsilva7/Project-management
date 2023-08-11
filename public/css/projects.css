@@ -1,3 +1,31 @@
+@import "./globals.css";
+@import "./header.css";
+@import "./menu.css";
+
+input {
+  width: 340px;
+  height: 45px;
+  display: block;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  background: #00000015;
+  margin: 1.3rem 0;
+  padding: 1rem;
+}
+textarea {
+  width: 365px;
+  display: block;
+  border: none;
+  outline: none;
+  background: #e8e8e8;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  color: #505050;
+}
+label {
+  font-size: 1.3rem;
+}
 .projects {
   max-width: 100%;
   max-height: 42rem;
@@ -62,7 +90,7 @@
 }
 .add-card span {
   font-size: 4rem;
-  color: white
+  color: white;
 }
 .formProject {
   width: 100vw;
@@ -75,7 +103,7 @@
   place-content: center;
   display: none;
 }
-.background{
+.background {
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -111,3 +139,23 @@
   background-color: #a9c9f2;
   border: none;
 }
+.menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+}
+.menu-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  color: #464852;
+}
+.space {
+  position: relative;
+}
+.active {
+  display: grid;
+}
+

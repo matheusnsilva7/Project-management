@@ -1,3 +1,16 @@
+@import "./globals.css";
+@import "./header.css";
+@import "./menu.css";
+
+.container-body {
+  width: 100rem;
+  margin: 0 auto;
+}
+.container-base {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+}
 .container-information {
   display: flex;
   gap: 2.5rem;

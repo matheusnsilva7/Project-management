@@ -1,3 +1,64 @@
+@import "./globals.css";
+@import "./header.css";
+@import "./menu.css";
+
+input {
+  width: 340px;
+  height: 45px;
+  display: block;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  background: #00000015;
+  margin: 1.3rem 0;
+  padding: 1rem;
+}
+textarea {
+  width: 365px;
+  display: block;
+  border: none;
+  outline: none;
+  background: #e8e8e8;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  color: #505050;
+}
+label {
+  font-size: 1.3rem;
+}
+.Progress {
+  color: #70a1e5;
+  background-color: rgba(112, 161, 229, 0.13);
+  border-radius: 2rem;
+}
+.Hard,
+.Deferred {
+  color: #ee201c;
+  background-color: rgba(238, 32, 28, 0.13);
+  border-radius: 2rem;
+}
+.Easy,
+.Completed {
+  color: #1a932e;
+  background-color: rgba(26, 147, 46, 0.13);
+  border-radius: 2rem;
+}
+.Medium,
+.Review {
+  color: #dfa510;
+  background-color: rgba(226, 177, 51, 0.13);
+  border-radius: 2rem;
+}
+.container-body {
+  width: 100rem;
+  margin: 0 auto;
+}
+.container-base {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+}
+
 .board-container {
   width: 100%;
   height: 100%;
@@ -231,4 +292,15 @@
   border-radius: 1rem;
   font-size: 1.3rem;
   text-align: center;
+}
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(71, 71, 71, 0.4);
+}
+.active {
+  display: grid;
 }

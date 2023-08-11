@@ -1,10 +1,22 @@
+@import "./globals.css";
+
+.container-body {
+  width: 100rem;
+  margin: 0 auto;
+}
+.container-base {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+}
+
 .login {
   height: 100vh;
   display: grid;
   place-content: center;
 }
-.container_login img{
-  width:7rem;
+.container_login img {
+  width: 7rem;
   height: 7rem;
 }
 .container_login {

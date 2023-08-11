@@ -1,3 +1,7 @@
+@import "./globals.css";
+@import "./header.css";
+@import "./menu.css";
+
 .tasksContainer {
   width: 100%;
   height: 100%;
@@ -44,4 +48,26 @@ tr .name{
     -webkit-line-clamp: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+}
+.Progress {
+  color: #70a1e5;
+  background-color: rgba(112, 161, 229, 0.13);
+  border-radius: 2rem;
+}
+.Hard, .Deferred {
+  color: #ee201c;
+  background-color: rgba(238, 32, 28, 0.13);
+  border-radius: 2rem;
+}
+.Easy,
+.Completed {
+  color: #1a932e;
+  background-color: rgba(26, 147, 46, 0.13);
+  border-radius: 2rem;
+}
+.Medium,
+.Review {
+  color: #dfa510;
+  background-color: rgba(226, 177, 51, 0.13);
+  border-radius: 2rem;
 }

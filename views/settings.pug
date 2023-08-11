@@ -1,18 +1,31 @@
-extends base
+doctype html
+html(lang="en")
+    head
+        title Project management - #{title}
+        link(rel="stylesheet" href="/css/settings.css")
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link( rel="icon" type="image/png" href="/img/Management-logos_transparent.png")
+        link( rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" )
 
-block content
-    .container_settings 
-        .container_settings-box
-            .settings
-                h3.title Change Username and Email
-                form.change
-                    input(type="text" name="username" placeholder="Username" value=`${user.name}`)#name
-                    input(type="email" name="email" placeholder="Email" value=`${user.email}`)#email
-                    button.update update
-            .change_password
-                h3.title Change Password
-                form.changePassword
-                    input(type="password" name="password" placeholder="Password")
-                    input(type="password" name="newPassword" placeholder="New Password")
-                    input(type="password" name="confirmPassword" placeholder="Confirm Password")
-                    button.update.btn--save-password Save password
+    body
+        .container-body
+            include _menu
+            .container-base
+                include _header
+                .container_settings 
+                    .container_settings-box
+                        .settings
+                            h3.title Change Username and Email
+                            form.change
+                                input(type="text" name="username" placeholder="Username" value=`${user.name}`)#name
+                                input(type="email" name="email" placeholder="Email" value=`${user.email}`)#email
+                                button.update update
+                        .change_password
+                            h3.title Change Password
+                            form.changePassword
+                                input(type="password" name="password" placeholder="Password")
+                                input(type="password" name="newPassword" placeholder="New Password")
+                                input(type="password" name="confirmPassword" placeholder="Confirm Password")
+                                button.update.btn--save-password Save password
+        script(src="/js/bundle.js")

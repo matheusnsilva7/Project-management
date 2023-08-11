@@ -1,3 +1,39 @@
+@import "./globals.css";
+@import "./header.css";
+@import "./menu.css";
+
+
+input {
+  width: 340px;
+  height: 45px;
+  display: block;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  background: #00000015;
+  margin: 1.3rem 0;
+  padding: 1rem;
+}
+textarea {
+  width: 365px;
+  display: block;
+  border: none;
+  outline: none;
+  background: #e8e8e8;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  color: #505050;
+}
+
+.title {
+    font-size: 1.3rem;
+    color: #505050;
+    text-align: center;
+}
+label {
+  font-size: 1.3rem;
+}
+
 .container_settings {
   height: 100%;
   width: 100%;
