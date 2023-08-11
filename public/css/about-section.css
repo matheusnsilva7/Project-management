@@ -1,0 +1,36 @@
+.about__section {
+  width: 100%;
+  background: linear-gradient(to right, #a9c9f2 50%, #f7f7f7 50%);
+}
+.about__section-container {
+  width: 1100px;
+  margin: 0 auto;
+  display: flex;
+}
+.about__section-container div {
+  width: 65rem;
+}
+.about-container{
+    padding: 4rem;
+}
+.about-container h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #505050;
+}
+.about-container h3::after {
+  content: "";
+  display: block;
+  width: 10rem;
+  margin: 0 auto;
+  height: 2px;
+  background-color: #505050;
+  margin-top: 1rem;
+}
+
+.about-container p {
+  padding-top: 4rem;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  color: #505050;
+}

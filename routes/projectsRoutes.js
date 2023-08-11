@@ -18,7 +18,14 @@ router
 router.patch(
   "/updateMembers/:id",
   authController.protect,
+  authController.restricToProject,
   authController.updateMembers
+);
+router.patch(
+  "/deleteMembers/:id",
+  authController.protect,
+  authController.restricToProject,
+  authController.deleteMembers
 );
 router
   .route("/:id")

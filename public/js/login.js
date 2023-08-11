@@ -1,0 +1,67 @@
+import axios from "../../node_modules/axios/index";
+import { showAlert } from "./alerts";
+
+export const login = async (data, type) => {
+  try {
+    const url =
+      type === "login"
+        ? "http://127.0.0.1:3000/api/v1/users/login"
+        : "http://127.0.0.1:3000/api/v1/users/signup";
+
+    const res = await axios({
+      method: "POST",
+      url,
+      data,
+    });
+
+    if (res.data.status === "success") {
+      showAlert(
+        "success",
+        `${type === "login" ? "Logged in" : "Sign up"} succesfully!`
+      );
+      window.setTimeout(() => {
+        location.assign("/projects");
+      }, 1000);
+    }
+  } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const logout = async () => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: "http://127.0.0.1:3000/api/v1/users/logout",
+    });
+
+    if ((res.data.status = "success")) location.assign("/");
+  } catch (err) {
+    showAlert("error", "Eror logging out! Try again.");
+  }
+};
+
+export const updateSettings = async (data, type) => {
+  try {
+    const url =
+      type === "password"
+        ? "http://127.0.0.1:3000/api/v1/users/updateMyPassword"
+        : "http://127.0.0.1:3000/api/v1/users/updateMe";
+    const res = await axios({
+      method: "PATCH",
+      url,
+      data,
+    });
+
+    if (res.data.status === "success") {
+      showAlert("success", `${type.toUpperCase()} updated successfully!`);
+      if (type !== "password") {
+        window.setTimeout(() => {
+          location.reload(true);
+        }, 1000);
+      }
+    }
+  } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};

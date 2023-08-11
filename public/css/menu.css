@@ -1,0 +1,78 @@
+.menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+}
+.menu-container h2{
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: .2rem;
+  color: #464852;
+}
+.space {
+  position: relative;
+}
+.menu-container img {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 6.2rem;
+  object-fit: cover;
+}
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+.user-container .person {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #e4e4e4;
+}
+.user-container h4 {
+  font-size: 1.2rem;
+  color: #292d32;
+  font-weight: 300;
+}
+.user-container span {
+  color: #292d32;
+}
+.setting-container {
+  width: 13rem;
+  display: none;
+  background-color: rgba(250, 250, 250, 1);
+  position: absolute;
+  right: 0;
+  border-radius: 2rem;
+  overflow: hidden;
+  transition: 1s;
+  gap: 1rem;
+}
+.setting-container a {
+  font-size: 1.2rem;
+  color: #292d32;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+.setting-container a span:first-child {
+  font-size: 1.4rem;
+}
+.setting-container-btn {
+  display: grid;
+  padding: 1rem 0.8rem;
+}
+.bottom {
+  padding-top: 0.5rem;
+}

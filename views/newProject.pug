@@ -1,0 +1,13 @@
+extends login
+
+block content
+    a.login-logo(href="/")
+        div
+        span Management
+
+    Form   
+        h3.title New Project
+        input(type="text" name="username" placeholder="Username")
+        input(type="date" name="duedate")
+        textarea(name="about", cols="40", rows="4" placeholder="Describe your Project")
+        button.button create

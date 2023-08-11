@@ -1,0 +1,36 @@
+.test__section {
+  width: 100%;
+  background-color: #a9c9f2;
+}
+.test__section-container {
+  text-align: center;
+  padding: 4rem;
+}
+.test__section-container h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #505050;
+}
+.test__section-container h3::after {
+  content: "";
+  display: block;
+  width: 10rem;
+  margin: 0 auto;
+  height: 2px;
+  background-color: #505050;
+  margin-top: 2rem;
+}
+.test__section-container p {
+  font-size: 1.5rem;
+  width: 500px;
+  height: 11rem;
+  margin: 2rem auto;
+  padding: 3rem 0;
+}
+.test__section-container a {
+  background-color: #f7f7f7;
+  font-size: 1.5rem;
+  color: #505050;
+  border-radius: 5px;
+  padding: 1rem 4rem;
+}

@@ -1,0 +1,32 @@
+extends  base
+
+block content
+    .settingsProject-container 
+        h2 update data
+        form.projectChange
+            label(for="name") Name
+            label(For="description") Description
+            input(type="text" name="name" id="name" value=project.name)
+            input(type="text" name="description" id="description" value=project.description)
+            button.update update
+        .members-container
+            h2 members
+            .containerMembers
+                each person in project.members
+                    .member-container
+                        span.material-symbols-outlined.person person
+                        h4= person.name
+                        h4=person.email
+                        button(id=person.id).deleteUser Remove
+        .container-button
+            form.newMember
+                label.new(For="email") Add new member
+                input.new(type="email" name="members" id="email" placeholder="Email")
+                button.update update
+            button.deleteProject Delete Project
+    .containerDelete
+        .deleteBackground 
+        .deleteContainer 
+            h3 Are you sure you want to delete?
+            button.yes yes
+            button.no no

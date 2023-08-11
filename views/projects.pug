@@ -1,0 +1,29 @@
+extends  base
+
+block content
+    .projects
+        .projects-container
+            .add-card 
+                span.material-symbols-outlined add
+            each project in projectsAdmin
+                a(href=`/project/${project.id}`).project-card
+                    span(class="material-symbols-outlined") group
+                    h2= project.name
+                    h3= project.description
+
+            each project in projectsMembers
+                a(href=`/project/${project.id}`).project-card
+                    span(class="material-symbols-outlined").green groups
+                    h2= project.name
+                    h3= project.description
+            if projectsAdmin.length <= 0 && projectsMembers.length <= 0
+                p.notFound No project found
+    .formProject 
+        .background
+        form.projectform
+            h2 New Project
+            label(for="projectName") Name
+            input(type="text" id="projectName" placeholder="Name")
+            label(for="projectDescription") Description
+            textarea#projectDescription(name="Description", cols="30", rows="8" ) 
+            button Create

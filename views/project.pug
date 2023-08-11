@@ -1,0 +1,45 @@
+extends  base
+
+block content
+    .projects
+        .container-information 
+            .tasks-container 
+                span.material-symbols-outlined format_align_justify
+                h4 All tasks
+                h3= allTask
+            .tasks-container 
+                span.material-symbols-outlined.orange playlist_add_check
+                h4 Tasks completed
+                h3= completed.length
+            .tasks-container 
+                span.material-symbols-outlined.blue work
+                h4 Tasks in progress
+                h3= progress
+            .tasks-container 
+                span.material-symbols-outlined.yellow work_history                
+                h4 Tasks in review
+                h3= review
+            .completed-container
+                h4 Tasks Completed
+                .table-container
+                    table 
+                        tr 
+                            th.name  Name 
+                            th Due Date
+                            th Difficult
+                            th  Status
+                            
+                        tr 
+                        each task in completed
+                            tr 
+                                td.name= task.name
+                                td= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {year: 'numeric',day: "numeric",month: "long",}) : ""
+                                td(class=`${task.difficult}`)= task.difficult
+                                td(class=`${task.status}`)=task.status
+                            tr 
+                    table
+            .overall-container
+                h4 Overall Progress
+                .graphic
+                    .graphicContainer(style=`background: conic-gradient(rgba(26, 147, 46, 0.8) 0% ${(completed.length / allTask) * 100}%,#70a1e5 ${(completed.length / allTask) * 100}% ${((completed.length / allTask) * 100 ) + ((progress / allTask) * 100)}%,#f0c274 ${((completed.length/ allTask)*100 )+ ((progress/allTask)* 100)}% ${(completed.length/allTask)*100 + (progress/allTask)*100 + (review/allTask) *100}%,#ee201c ${(completed.length/allTask)*100 + (progress/allTask)*100 + (review/allTask) *100}% 100%)`)
+                span.porcentage= `${((completed.length/ allTask)*100 || 0).toFixed(0)}%`

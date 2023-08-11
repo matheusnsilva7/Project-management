@@ -1,0 +1,18 @@
+extends base
+
+block content
+    .container_settings 
+        .container_settings-box
+            .settings
+                h3.title Change Username and Email
+                form.change
+                    input(type="text" name="username" placeholder="Username" value=`${user.name}`)#name
+                    input(type="email" name="email" placeholder="Email" value=`${user.email}`)#email
+                    button.update update
+            .change_password
+                h3.title Change Password
+                form.changePassword
+                    input(type="password" name="password" placeholder="Password")
+                    input(type="password" name="newPassword" placeholder="New Password")
+                    input(type="password" name="confirmPassword" placeholder="Confirm Password")
+                    button.update.btn--save-password Save password

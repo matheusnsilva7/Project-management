@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        title #{title}
+        link(rel="stylesheet" href="css/style.css")
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link( rel="icon" type="image/png" href="/img/Management-logos_transparent.png")
+    body
+        .login
+            .container_login
+                block content
+                    img(src="/img/Management-logos_transparent.png" alt="logo")
+                    form.form-login
+                        input(type="email" name="email" placeholder="email")#email
+                        input(type="password" autocomplete name="password" placeholder="password")#password
+                        //a(href="#") Forgot password?
+                        br
+                        button.button Log in
+
+                    .login_account 
+                        span Not a member? 
+                        a(href="/signup") Sign up now
+        script(src="./js/bundle.js")

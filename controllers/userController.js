@@ -32,7 +32,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
       )
     );
   }
-
   const filterBody = filterObj(req.body, "name", "email");
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filterBody, {
     new: true,
@@ -40,7 +39,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 
   res.status(200).json({
-    status: "sucess",
+    status: "success",
     data: {
       user: updatedUser,
     },

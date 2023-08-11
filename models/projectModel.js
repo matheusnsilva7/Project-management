@@ -5,28 +5,20 @@ const projectSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "Project must have a name"],
-      unique: true,
       trim: true,
       maxlength: [25, "A tour name must have less or equal then 25 characters"],
       minlength: [3, "A tour name must have more or equal then 3 characters"],
     },
-    photo: String,
-    dueDate: {
-      type: Date,
-    },
     description: {
       type: String,
       trim: true,
-    },
-    imageCover: {
-      type: String,
     },
     createdAt: {
       type: Date,
       default: Date.now(),
       select: false,
     },
-    admin: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
+    admin: { type: mongoose.Schema.ObjectId, ref: "User" },
     members: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
     secretProject: {
       type: Boolean,

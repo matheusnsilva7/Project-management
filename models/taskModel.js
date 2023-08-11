@@ -6,6 +6,7 @@ const taskSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "task can not be empty"],
+      maxlength: 15,
     },
     description: {
       type: String,
@@ -17,16 +18,19 @@ const taskSchema = new mongoose.Schema(
     },
     dueDate: {
       type: Date,
+      required: [true, "task most have a dueDate"],
     },
     difficult: {
       type: String,
-      enum: ["easy", "medium", "hard"],
-      default: "easy",
+      enum: ["Easy", "Medium", "Hard"],
+      default: "Easy",
+      required: [true, "task most have a difficult"],
     },
     status: {
       type: String,
-      enum: ["review", "progress", "completed", "deferred"],
-      default: "review",
+      enum: ["Review", "Progress", "Completed", "Deferred"],
+      default: "Review",
+      required: [true, "task most have a status"],
     },
     notes: String,
     project: {

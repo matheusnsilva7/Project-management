@@ -29,7 +29,7 @@ const createSendToken = (user, statusCode, res) => {
   user.password = undefined;
 
   res.status(statusCode).json({
-    status: "sucess",
+    status: "success",
     token,
     data: {
       user,
@@ -71,6 +71,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
 
   if (!token) {
@@ -96,8 +98,42 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   req.user = freshUser;
+  res.locals.user = freshUser;
   next();
 });
+
+exports.isLoggedIn = async (req, res, next) => {
+  if (req.cookies.jwt) {
+    try {
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+      const freshUser = await User.findById(decoded.id);
+      if (!freshUser) {
+        return next();
+      }
+
+      if (freshUser.changePasswordAfter(decoded.iat)) {
+        return next();
+      }
+      res.locals.user = freshUser;
+      return next();
+    } catch (err) {
+      return next();
+    }
+  }
+  next();
+};
+
+exports.logout = (req, res) => {
+  res.cookie("jwt", "loggedout", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: "success" });
+};
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
@@ -114,28 +150,31 @@ exports.restrictTo = (...roles) => {
 
 exports.restricToProject = catchAsync(async (req, res, next) => {
   const project = await Project.findById(req.body.project || req.params.id);
-  if (req.user.role !== "admin") {
-    if (
-      !project.admin.filter((el) => el._id.toString() === req.user.id).length ||
-      !project.members.filter((el) => el._id.toString() === req.user.id).length
-    ) {
-      return next(
-        new AppError("You do not have permission to perform this action.", 403)
-      );
-    }
+  console.log(project)
+  if (
+    project.admin._id.toString() !== req.user.id &&
+    !project.members.filter((el) => el._id.toString() === req.user.id).length >
+      0
+  ) {
+    return next(
+      new AppError("You do not have permission to perform this action.", 403)
+    );
   }
+
   next();
 });
 
 exports.restricToTask = catchAsync(async (req, res, next) => {
   const task = await Task.findById(req.params.id);
-
-  if (req.user.role !== "admin") {
-    if (task?.user._id.toString() !== req.user.id) {
-      return next(
-        new AppError("You do not have permission to perform this action.", 403)
-      );
-    }
+  const project = await Project.findById(task.project);
+  if (
+    project.admin._id.toString() !== req.user.id &&
+    !project.members.filter((el) => el._id.toString() === req.user.id).length >
+      0
+  ) {
+    return next(
+      new AppError("You do not have permission to perform this action.", 403)
+    );
   }
   next();
 });
@@ -163,7 +202,7 @@ exports.forgorPassword = catchAsync(async (req, res, next) => {
     });
 
     res.status(200).json({
-      status: "sucess",
+      status: "success",
       message: "Token sent to email!",
     });
   } catch (err) {
@@ -221,15 +260,65 @@ exports.updateMembers = catchAsync(async (req, res, next) => {
     return next(new AppError("No document found with that ID", 404));
   }
 
-  if (!req.body.member && !req.body.admin) {
+  if (!req.body.member) {
     return next(new AppError("No params found with that ID", 404));
   }
 
-  if(req.body.member) project.members = [...project.members, req.body.member];
-  if(req.body.admin) project.admin = [...project.admin, req.body.admin];
-  console.log(project.members);
-  console.log(project.admin)
-  //await project.save();
+  if (project.admin.id !== req.user.id) {
+    return next(
+      new AppError("you do not have permission to perform this action", 404)
+    );
+  }
+
+  const user = await User.findOne({ email: req.body.member });
+
+  if (!user) {
+    return next(new AppError("No user found with that email", 404));
+  }
+
+  if (project.members.filter((e) => e.id === user.id).length > 0) {
+    return next(new AppError("The user is already a member", 404));
+  }
+
+  if (project.admin.id === user.id) {
+    return next(new AppError("You are the admin of this project", 404));
+  }
+
+  project.members = [...project.members, user.id];
+
+  await project.save();
+
+  return res.status(200).json({
+    status: "success",
+    data: {
+      project,
+    },
+  });
+});
+exports.deleteMembers = catchAsync(async (req, res, next) => {
+  const project = await Project.findById(req.params.id);
+
+  if (!project) {
+    return next(new AppError("No document found with that ID", 404));
+  }
+
+  if (!req.body.member) {
+    return next(new AppError("No params found with that ID", 404));
+  }
+
+  if (project.admin.id !== req.user.id) {
+    return next(
+      new AppError("you do not have permission to perform this action", 404)
+    );
+  }
+
+  if (project.members.filter((e) => e.id === req.body.member).length === 0) {
+    return next(new AppError("This user is not in this project", 404));
+  }
+
+  project.members = project.members.filter((e) => e.id !== req.body.member);
+
+  await project.save();
 
   return res.status(200).json({
     status: "success",

@@ -1,0 +1,18 @@
+extends  base
+
+block content
+    .tasksContainer
+        .container-tasks
+            table 
+                tr 
+                    th.name  Name 
+                    th Due Date
+                    th Difficult
+                    th  Status
+                        
+                each task in tasks
+                    tr 
+                        td.name= task.name
+                        td= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {year: 'numeric',day: "numeric",month: "long",}) : ""
+                        td(class=`${task.difficult}`)= task.difficult
+                        td(class=`${task.status}`)=task.status

@@ -1,0 +1,146 @@
+.container-information {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 76rem;
+  margin: 0 auto;
+}
+.tasks-container {
+  background-color: rgba(250, 250, 250, 0.5);
+  width: 17rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0px 1px 6px rgba(175, 175, 175, 0.5);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.tasks-container h4 {
+  color: #797979;
+  font-size: 1rem;
+}
+.tasks-container h3 {
+  color: #060606;
+  font-size: 1.4rem;
+  grid-column: span 2;
+  text-align: center;
+}
+.tasks-container span {
+  background-color: #d398e7;
+  padding: 0.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 2.2rem;
+  border-radius: 50%;
+  color: white;
+}
+.projects h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: .2rem;
+}
+.tasks-container .orange {
+  background-color: rgba(26, 147, 46, 0.6);
+}
+.tasks-container .blue {
+  background-color: #70a1e5;
+}
+.tasks-container .yellow {
+  background-color: #f0c274;
+}
+.table-container {
+  background-color: rgba(250, 250, 250, 0.5);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  overflow: auto;
+  box-shadow: 0px 1px 6px rgba(175, 175, 175, 0.5);
+  height: 26rem;
+}
+.completed-container h4 {
+  color: #060606;
+  font-size: 1.5rem;
+  padding: 0 0 0.5rem 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.completed-container table {
+  width: 44rem;
+}
+.completed-container th,
+.completed-container td {
+  padding: 0.5rem 0rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.completed-container tr:first-child {
+  border-bottom: 2px solid rgba(250, 250, 250, 0.1);
+}
+.Progress {
+  color: #70a1e5;
+  background-color: rgba(112, 161, 229, 0.13);
+  border-radius: 2rem;
+}
+.Hard, .Deferred {
+  color: #ee201c;
+  background-color: rgba(238, 32, 28, 0.13);
+  border-radius: 2rem;
+}
+.Easy,
+.Completed {
+  color: #1a932e;
+  background-color: rgba(26, 147, 46, 0.13);
+  border-radius: 2rem;
+}
+.Medium,
+.Review {
+  color: #dfa510;
+  background-color: rgba(226, 177, 51, 0.13);
+  border-radius: 2rem;
+}
+.graphic {
+  display: grid;
+  place-content: center;
+  background-color: rgba(250, 250, 250, 0.5);
+  padding: 5.5rem 5rem;
+  border-radius: 1.5rem;
+  position: relative;
+  box-shadow: 0px 1px 6px rgba(175, 175, 175, 0.5);
+}
+.graphicContainer {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  grid-column: span 3;
+  margin: 0 auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+.graphicContainer::after {
+  content: "";
+  display: block;
+  width: 13rem;
+  border-radius: 50%;
+  height: 13rem;
+  margin: 1rem;
+  background-color: #efe7e1;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+.overall-container{
+  position: relative;
+}
+.overall-container h4 {
+  color: #060606;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.porcentage {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 300;
+}

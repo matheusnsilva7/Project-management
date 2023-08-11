@@ -1,0 +1,61 @@
+.container_settings {
+  height: 100%;
+  width: 100%;
+}
+.container_settings-box {
+  width: 70rem;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+label {
+  font-size: 1.3rem;
+}
+.file {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.update {
+  width: 21rem;
+  background: #7f99bd;
+  display: block;
+  height: 40px;
+  border: none;
+  color: white;
+  margin: 0 auto 2.2rem;
+}
+.update:first-child{
+  margin: 0 auto;
+}
+.settings h3 {
+  padding-bottom: 2rem;
+}
+.settings input {
+  background-color: white;
+  margin: 0.5rem 0;
+  padding: 0.2rem 1rem;
+}
+.settings form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.change_password h3 {
+  margin-bottom: 2rem;
+}
+.change_password input {
+  background: white;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+}
+.change_password form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.change_password input:first-child {
+  margin-right: 3rem;
+}

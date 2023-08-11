@@ -1,0 +1,31 @@
+header
+    .header-container
+        nav
+            ul
+                li: a(href="/" class=`${title === "Projects"? "hover": ""}`)  
+                    span(class="material-symbols-outlined") grid_view
+                    span Overview
+                if title === "Project" || title === "Tasks" || title === "Board" || title ==="settings"
+                    li: a(href=`/project/${id}` class=`${title === "Project"? "hover": ""}`) 
+                        span( class="material-symbols-outlined") business_center
+                        span   Project
+                    li: a(href=`/project/${id}/board` class=`${title === "Board"? "hover": ""}`) 
+                        span( class="material-symbols-outlined") assignment
+                        span board
+                    li: a(href=`/project/${id}/tasks` class=`${title === "Tasks"? "hover": ""}`) 
+                        span( class="material-symbols-outlined") checklist
+                        span Tasks
+                    if role === "admin"
+                        li: a(href=`/project/${id}/project-settings` class=`${title === "settings"? "hover": ""}`) 
+                            span( class="material-symbols-outlined") settings
+                            span Settings
+                        
+                if title === "Settings"
+                    li: a(href=`/settings` class=`${title === "Settings"? "hover": ""}`) 
+                        span( class="material-symbols-outlined") settings
+                        span Settings
+                    li: a.btnLogout
+                        span(class="material-symbols-outlined") logout
+                        span Log Out 
+
+        
