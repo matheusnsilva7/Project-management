@@ -6,6 +6,7 @@ const express = require("express");
 const AppError = require("./utils/appError");
 const rateLimit = require("express-rate-limit");
 const userRouter = require("./routes/userRoutes");
+const compression = require("compression");
 const taskRouter = require("./routes/taskRouter");
 const viewRouter = require("./routes/viewRoutes");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -41,9 +42,11 @@ app.use(xss());
 
 app.use(hpp({ whitelist: ["duration"] }));
 
+app.use(compression());
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  console.log(req.cookies);
+  //console.log(req.cookies);
   next();
 });
 

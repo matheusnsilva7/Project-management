@@ -124,7 +124,7 @@ if (columns.length != 0) {
     try {
       const res = await axios({
         method: "PATCH",
-        url: `http://127.0.0.1:3000/api/v1/tasks/${e.target.id}`,
+        url: `/api/v1/tasks/${e.target.id}`,
         data: {
           status: e.target.parentElement.id,
         },
@@ -153,7 +153,7 @@ if (createProject) {
 
       const res = await axios({
         method: "POST",
-        url: `http://127.0.0.1:3000/api/v1/projects`,
+        url: `/api/v1/projects`,
         data: {
           name,
           description,

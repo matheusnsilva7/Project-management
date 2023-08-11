@@ -63,10 +63,10 @@ projectSchema.pre(/^find/, function (next) {
   next();
 });
 
-projectSchema.post(/^find/, function (docs, next) {
+/*projectSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds`);
   next();
-});
+}); */
 
 const Project = mongoose.model("Project", projectSchema);
 

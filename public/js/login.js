@@ -5,8 +5,8 @@ export const login = async (data, type) => {
   try {
     const url =
       type === "login"
-        ? "http://127.0.0.1:3000/api/v1/users/login"
-        : "http://127.0.0.1:3000/api/v1/users/signup";
+        ? "/api/v1/users/login"
+        : "/api/v1/users/signup";
 
     const res = await axios({
       method: "POST",
@@ -32,7 +32,7 @@ export const logout = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:3000/api/v1/users/logout",
+      url: "/api/v1/users/logout",
     });
 
     if ((res.data.status = "success")) location.assign("/");
@@ -45,8 +45,8 @@ export const updateSettings = async (data, type) => {
   try {
     const url =
       type === "password"
-        ? "http://127.0.0.1:3000/api/v1/users/updateMyPassword"
-        : "http://127.0.0.1:3000/api/v1/users/updateMe";
+        ? "/api/v1/users/updateMyPassword"
+        : "/api/v1/users/updateMe";
     const res = await axios({
       method: "PATCH",
       url,

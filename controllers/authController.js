@@ -150,7 +150,7 @@ exports.restrictTo = (...roles) => {
 
 exports.restricToProject = catchAsync(async (req, res, next) => {
   const project = await Project.findById(req.body.project || req.params.id);
-  console.log(project)
+
   if (
     project.admin._id.toString() !== req.user.id &&
     !project.members.filter((el) => el._id.toString() === req.user.id).length >
