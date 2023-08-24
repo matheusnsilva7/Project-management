@@ -66,7 +66,7 @@ The Project Management Website offers a complete solution for organizing project
 
 ## Demo
 
-Explore the live demo of the Project Management Website: [https://project-management-website.netlify.app](https://project-management-website.netlify.app)
+Explore the live demo of the Project Management Website: [https://project-management-smoky.vercel.app](https://project-management-smoky.vercel.app)
 
 ## License
 
