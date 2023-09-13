@@ -295,6 +295,7 @@ exports.updateMembers = catchAsync(async (req, res, next) => {
     },
   });
 });
+
 exports.deleteMembers = catchAsync(async (req, res, next) => {
   const project = await Project.findById(req.params.id);
 

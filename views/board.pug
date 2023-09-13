@@ -26,7 +26,7 @@ html(lang="en")
                                         p= task.description
                                         div
                                             h5(class=`${task.difficult}`)= task.difficult
-                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                                            h5= task.dueDate ? `${task.dueDate.toString().slice(0,10).split(" ")[1]} ${task.dueDate.getDate() + 1}` : ""
                         .progress 
                             h3 Progress
                             .column#Progress
@@ -36,7 +36,7 @@ html(lang="en")
                                         p= task.description
                                         div
                                             h5(class=`${task.difficult}`)= task.difficult
-                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                                            h5= task.dueDate ? `${task.dueDate.toString().slice(0,10).split(" ")[1]} ${task.dueDate.getDate() + 1}` : ""
                         .completed
                             h3 Completed
                             .column#Completed
@@ -46,7 +46,7 @@ html(lang="en")
                                         p= task.description
                                         div
                                             h5(class=`${task.difficult}`)= task.difficult
-                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
+                                            h5= task.dueDate ? `${task.dueDate.toString().slice(0,10).split(" ")[1]} ${task.dueDate.getDate() + 1}` : ""
                         .deferred
                             h3 Deferred
                             .column#Deferred
@@ -56,36 +56,10 @@ html(lang="en")
                                         p= task.description
                                         div
                                             h5(class=`${task.difficult}`)= task.difficult
-                                            h5= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {day: "numeric",month: "long",}) : ""
-                .information
-                .formTask
-                    .background
-                    form.taskForm
-                        h2 New Task
-                        label(for="taskName") Name
-                        input#taskName(type="text" name="name")
-                        label(for="taskDescription") Description
-                        textarea#taskDescription(name="description", cols="30", rows="4" )
-                        label(for="taskDate") Due date
-                        input#taskDate(type="date" name="dueDate")
-                        label difficult
-                        div.formDiv
-                            input(type="radio" id="easy" name="difficult" value="Easy" checked) 
-                            label(for="easy") Easy
-                            input(type="radio" id="medium" name="difficult" value="Medium" ) 
-                            label(for="medium") Medium
-                            input(type="radio" id="hard" name="difficult" value="Hard" )
-                            label(for="hard") Hard
-                        label Status 
-                        div.formDiv
-                            input(type="radio" id="review" name="status" value="Review" checked)
-                            label(for="review") Review
-                            input(type="radio" id="progress" name="status" value="Progress")
-                            label(for="progress") Progress
-                            input(type="radio" id="completed" name="status" value="Completed")
-                            label(for="completed") Completed
-                            input(type="radio" id="deferred" name="status" value="Deferred")
-                            label(for="deferred") Deferred
-                        button Create
+                                            h5= task.dueDate ? `${task.dueDate.toString().slice(0,10).split(" ")[1]} ${task.dueDate.getDate() + 1}` : ""
+                div.information
+                    div.taskInformation
+                        div.background
+                        div.maininfoContainer
         script(src="/js/bundle.js")
 

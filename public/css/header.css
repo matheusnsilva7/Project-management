@@ -1,6 +1,6 @@
 .header-container {
-  width: 21rem;
-  height: 42rem;
+  width: 25rem;
+  height: 52rem;
   background-color: rgba(250, 250, 250, 0.5);
   padding: 2rem 1rem;
   border-radius: 2.4rem;
@@ -15,7 +15,7 @@ nav ul li a {
   /*color: #b1b4b8; */
   display: flex;
   gap: 2rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   align-items: center;
   padding: 0.8rem 1rem;
   cursor: pointer;

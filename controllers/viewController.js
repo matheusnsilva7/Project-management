@@ -24,17 +24,16 @@ exports.getProjects = async (req, res, next) => {
     return next(new AppError("Please login again.", 404));
   }
 
-  const projectsAdmin = await Project.find({
-    admin: res.locals.user.id,
-  });
-  const projectsMembers = await Project.find({
-    members: { $in: [res.locals.user.id] },
+  const projects = await Project.find({
+    $or: [
+      { admin: res.locals.user.id },
+      { members: { $in: [res.locals.user.id] } }
+    ]
   });
 
   res.status(200).render("projects", {
     title: "Projects",
-    projectsAdmin,
-    projectsMembers,
+    projects,
   });
 };
 

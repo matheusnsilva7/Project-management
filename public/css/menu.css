@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
+  padding: 2rem 1rem;
 }
 .menu-container h2{
   text-align: center;

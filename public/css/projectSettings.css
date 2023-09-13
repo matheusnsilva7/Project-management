@@ -37,6 +37,9 @@ label {
 }
 .settingsProject-container {
   width: 100%;
+  height: 52rem;
+    display: grid;
+    place-content: center;
 }
 .settingsProject-container h2 {
   font-size: 1.3rem;
@@ -46,7 +49,7 @@ label {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   text-align: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 .settingsProject-container form input {
   margin: 0 auto;
@@ -60,7 +63,7 @@ label {
   height: 12rem;
   border-radius: 1.5rem;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   overflow: auto;
 }
 .containerMembers {

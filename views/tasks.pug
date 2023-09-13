@@ -25,7 +25,7 @@ html(lang="en")
                             each task in tasks
                                 tr 
                                     td.name= task.name
-                                    td= task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-us", {year: 'numeric',day: "numeric",month: "long",}) : ""
+                                    td=task.dueDate ? `${task.dueDate.toString().slice(0,10).split(" ")[1]} ${task.dueDate.getDate() + 1}` : ""
                                     td(class=`${task.difficult}`)= task.difficult
                                     td(class=`${task.status}`)=task.status
         script(src="/js/bundle.js")

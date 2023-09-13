@@ -76,18 +76,19 @@ input {
 }
 .container_login form a {
   display: block;
-  float: right;
+  margin-left: 25rem;
   font-size: 1.2rem;
   color: #7f99bd;
 }
 .button {
-  padding: 1rem 8rem;
   border-radius: 1rem;
   background: #7f99bd;
   display: block;
   border: none;
   color: white;
   margin: 2rem auto 0;
+  height: 3.5rem;
+  width: 19.2rem;
 }
 .login_account {
   font-size: 1.3rem;
@@ -118,4 +119,5 @@ textarea {
 }
 button {
   cursor: pointer;
+  position: relative;
 }

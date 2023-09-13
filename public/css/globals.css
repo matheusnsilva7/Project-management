@@ -50,11 +50,14 @@ a {
   background-color: #eb4d4b;
 }
 .container-body {
-  width: 100rem;
+  width: 115rem;
   margin: 0 auto;
 }
 .container-base {
   width: 100%;
   display: flex;
   gap: 2rem;
+}
+button{
+  cursor: pointer;
 }

@@ -1,12 +1,12 @@
 import axios from "../../node_modules/axios/index";
 import { showAlert } from "./alerts";
 
+const btn = document.querySelector(".button");
+
 export const login = async (data, type) => {
   try {
     const url =
-      type === "login"
-        ? "/api/v1/users/login"
-        : "/api/v1/users/signup";
+      type === "login" ? "/api/v1/users/login" : "/api/v1/users/signup";
 
     const res = await axios({
       method: "POST",
@@ -25,6 +25,11 @@ export const login = async (data, type) => {
     }
   } catch (err) {
     showAlert("error", err.response.data.message);
+    type === "login"
+      ? (btn.textContent = "Login")
+      : (document.querySelector(".btn").textContent = "create");
+    btn.disabled = false;
+    document.querySelector(".btn").disabled = true;
   }
 };
 
@@ -63,5 +68,7 @@ export const updateSettings = async (data, type) => {
     }
   } catch (err) {
     showAlert("error", err.response.data.message);
+    document.querySelector(".update").textContent = "Update";
+    document.querySelector(".update").disabled = false;
   }
 };

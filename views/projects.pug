@@ -17,18 +17,15 @@ html(lang="en")
                     .projects-container
                         .add-card 
                             span.material-symbols-outlined add
-                        each project in projectsAdmin
+                        each project in projects
                             a(href=`/project/${project.id}`).project-card
-                                span(class="material-symbols-outlined") group
+                                if project.admin._id.toString() === user._id.toString()
+                                    span(class="material-symbols-outlined") group
+                                else
+                                    span(class="material-symbols-outlined").green groups
                                 h2= project.name
                                 h3= project.description
-
-                        each project in projectsMembers
-                            a(href=`/project/${project.id}`).project-card
-                                span(class="material-symbols-outlined").green groups
-                                h2= project.name
-                                h3= project.description
-                        if projectsAdmin.length <= 0 && projectsMembers.length <= 0
+                        if projects.length <= 0
                             p.notFound No project found
                 .formProject 
                     .background
@@ -38,5 +35,5 @@ html(lang="en")
                         input(type="text" id="projectName" placeholder="Name")
                         label(for="projectDescription") Description
                         textarea#projectDescription(name="Description", cols="30", rows="8" ) 
-                        button Create
+                        button.btn Create
         script(src="/js/bundle.js")

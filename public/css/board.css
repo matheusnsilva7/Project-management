@@ -50,7 +50,7 @@ label {
   border-radius: 2rem;
 }
 .container-body {
-  width: 100rem;
+  width: 115rem;
   margin: 0 auto;
 }
 .container-base {
@@ -67,8 +67,7 @@ label {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 auto;
-  width: 77rem;
-  gap: 1rem;
+  gap: 2rem;
 }
 .container-completed {
   background-color: rgba(250, 250, 250, 0.5);
@@ -125,7 +124,7 @@ label {
   gap: 1rem;
   overflow: auto;
   padding-bottom: 1rem;
-  height: 34rem;
+  height: 47rem;
 }
 .review {
   grid-template-rows: 1rem 3rem;
@@ -162,26 +161,14 @@ label {
   cursor: pointer;
   font-size: 3rem;
 }
-.formTask {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(71, 71, 71, 0.4);
-  z-index: 4;
-  display: grid;
-  place-content: center;
-  display: none;
-}
 .formTask h2 {
   text-align: center;
   font-size: 1.5rem;
 }
-.formTask form {
+.formTask {
   background-color: white;
   display: grid;
-  z-index: 4;
+  z-index: 6;
   place-content: center;
   padding: 2rem 4rem;
   border-radius: 1rem;
@@ -190,29 +177,29 @@ label {
   display: flex;
   justify-content: space-between;
 }
-.formTask form input[type="radio"] + label {
+.formTask input[type="radio"] + label {
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
 }
-.formTask form input {
+.formTask input {
   height: 3rem;
   margin: 1rem 0;
 }
-.formTask form input[type="radio"] {
+.formTask input[type="radio"] {
   display: none;
 }
-.formTask form textarea {
+.formTask textarea {
   width: 340px;
   border-radius: 1rem;
 }
-.formTask form input[type="radio"]:checked + label {
+.formTask input[type="radio"]:checked + label {
   background-color: rgba(169, 201, 242, 0.2);
   color: #a9c9f2;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
-.formTask form button {
+.formTask button {
   background-color: #a9c9f2;
   color: white;
   border: none;
@@ -251,7 +238,7 @@ label {
   z-index: 4;
   padding: 2rem 4rem;
   border-radius: 1rem;
-  width: 34rem;
+  width: 42rem;
   gap: 2rem;
   position: relative;
 }
@@ -265,10 +252,12 @@ label {
   color: #6d6d6d;
 }
 .informationContainer h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 .informationContainer p {
-  font-size: 1rem;
+  font-size: 1.4rem;
+  font-weight: 300;
 }
 .informationContainer h5 {
   font-size: 1.3rem;
@@ -303,4 +292,54 @@ label {
 }
 .active {
   display: grid;
+}
+.information {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.show {
+  display: block;
+}
+.maininfoContainer {
+  z-index: 3;
+}
+.lds-ring {
+  display: inline-block;
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin: 6px;
+  border: 6px solid #1a932e;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #1a932e transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

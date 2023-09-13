@@ -1,7 +1,8 @@
 @import "./globals.css";
-@import "./header.css";
-@import "./menu.css";
-
+.container-base{
+  display: grid;
+  place-content: center;
+}
 .error {
   max-width: 80rem;
   text-align: center;
