@@ -5,10 +5,10 @@
   align-items: center;
   padding: 2rem 1rem;
 }
-.menu-container h2{
+.menu-container h2 {
   text-align: center;
   font-size: 2rem;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   color: #464852;
 }
 .space {

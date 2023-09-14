@@ -4,10 +4,13 @@ const projectSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Project must have a name"],
+      required: [true, "Project must have a name!"],
       trim: true,
-      maxlength: [25, "A tour name must have less or equal then 25 characters"],
-      minlength: [3, "A tour name must have more or equal then 3 characters"],
+      maxlength: [
+        25,
+        "A tour name must have less or equal then 25 characters!",
+      ],
+      minlength: [2, "A tour name must have more or equal then 3 characters!"],
     },
     description: {
       type: String,

@@ -27,10 +27,9 @@ export const login = async (data, type) => {
     showAlert("error", err.response.data.message);
     type === "login"
       ? (btn.textContent = "Login")
-      : (document.querySelector(".btn").textContent = "create");
-    type === "login"
-      ? (btn.disabled = false)
-      : (document.querySelector(".btn").disabled = true);
+      : (btn.textContent = "create");
+
+    btn.disabled = false;
   }
 };
 
@@ -68,7 +67,7 @@ export const updateSettings = async (data, type) => {
       }
     }
   } catch (err) {
-    showAlert("error", "Account with this email address already exists.");
+    showAlert("error", err.response.data.message);
     document.querySelector(".update").textContent = "Update";
     document.querySelector(".update").disabled = false;
   }

@@ -14,7 +14,7 @@
 .container-information {
   display: flex;
   gap: 2.6rem;
-  height:52rem;
+  height: 52rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -56,7 +56,7 @@
 .projects h2 {
   text-align: center;
   font-size: 1.5rem;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
 }
 .tasks-container .orange {
   background-color: rgba(26, 147, 46, 0.6);
@@ -99,7 +99,8 @@
   background-color: rgba(112, 161, 229, 0.13);
   border-radius: 2rem;
 }
-.Hard, .Deferred {
+.Hard,
+.Deferred {
   color: #ee201c;
   background-color: rgba(238, 32, 28, 0.13);
   border-radius: 2rem;
@@ -143,7 +144,7 @@
   background-color: #efe7e1;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
 }
-.overall-container{
+.overall-container {
   position: relative;
 }
 .overall-container h4 {

@@ -1,5 +1,5 @@
 @import "./globals.css";
-.container-base{
+.container-base {
   display: grid;
   place-content: center;
 }
@@ -56,6 +56,6 @@
   font-size: 3.5rem;
 }
 
-.return{
+.return {
   font-size: 2rem;
 }

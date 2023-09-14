@@ -18,7 +18,7 @@ html(lang="en")
                     form.projectChange
                         label(for="name") Name
                         label(For="description") Description
-                        input(type="text" name="name" id="name" value=project.name)
+                        input(type="text" name="name" id="name" value=project.name required)
                         input(type="text" name="description" id="description" value=project.description)
                         button.update update
                     .members-container

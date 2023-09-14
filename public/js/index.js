@@ -362,7 +362,7 @@ if (containerTask) {
                     <label for="taskName">Name</label>
                     <input id="taskName" type="text" name="name" value=${
                       data.name
-                    }>
+                    } required>
                     <label for="taskDescription">Description</label>
                     <textarea id="taskDescription" name="description" cols="30" rows="4">${
                       data.description ? data.description : ""
@@ -370,7 +370,7 @@ if (containerTask) {
                     <label for="taskDate">Due date</label>
                     <input id="taskDate" type="date" name="dueDate" value="${
                       data.dueDate ? data.dueDate.slice(0, 10) : ""
-                    }">
+                    }" required>
                     <label>Difficult</label>
                     <div class="formDiv">
                         <input type="radio" id="easy" name="difficult" value="Easy" ${

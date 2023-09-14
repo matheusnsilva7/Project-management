@@ -5,8 +5,9 @@ const taskSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "task can not be empty"],
+      required: [true, "task can not be empty!"],
       maxlength: 15,
+      minlength: [2, "Minimum length 2 characters!"],
     },
     description: {
       type: String,
@@ -18,19 +19,19 @@ const taskSchema = new mongoose.Schema(
     },
     dueDate: {
       type: Date,
-      required: [true, "task most have a dueDate"],
+      required: [true, "task most have a dueDate!"],
     },
     difficult: {
       type: String,
       enum: ["Easy", "Medium", "Hard"],
       default: "Easy",
-      required: [true, "task most have a difficult"],
+      required: [true, "task most have a difficult!"],
     },
     status: {
       type: String,
       enum: ["Review", "Progress", "Completed", "Deferred"],
       default: "Review",
-      required: [true, "task most have a status"],
+      required: [true, "task most have a status!"],
     },
     notes: String,
     project: {

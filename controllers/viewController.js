@@ -27,8 +27,8 @@ exports.getProjects = async (req, res, next) => {
   const projects = await Project.find({
     $or: [
       { admin: res.locals.user.id },
-      { members: { $in: [res.locals.user.id] } }
-    ]
+      { members: { $in: [res.locals.user.id] } },
+    ],
   });
 
   res.status(200).render("projects", {
