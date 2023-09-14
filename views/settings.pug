@@ -18,7 +18,7 @@ html(lang="en")
                         .settings
                             h3.title Change Username and Email
                             form.change
-                                input(type="text" name="username" placeholder="Username" value=`${user.name}`)#name
+                                input(type="text" name="username" placeholder="Username" minlength="3" maxlength="10" value=`${user.name}`)#name
                                 input(type="email" name="email" placeholder="Email" value=`${user.email}`)#email
                                 button.update Update
                         .change_password

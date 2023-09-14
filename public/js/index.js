@@ -10,12 +10,11 @@ const newTask = document.querySelector(".add-task");
 const columns = document.querySelectorAll(".column");
 const newMember = document.querySelector(".newMember");
 const newProject = document.querySelector(".add-card");
-const createTask = document.querySelector(".taskForm");
-const formNewTask = document.querySelector(".formTask");
-const background = document.querySelector(".background");
+const createTask = document.querySelector(".formnewtask");
+const containernewTask = document.querySelector(".createTask");
+const background = document.querySelectorAll(".background");
 const formSingup = document.querySelector(".formSignup");
 const logOutBtn = document.querySelectorAll(".btnLogout");
-const settingsBtn = document.querySelector("#settingsBtn");
 const information = document.querySelector(".information");
 const informationContainer = document.querySelector(".maininfoContainer");
 const deleteUser = document.querySelectorAll(".deleteUser");
@@ -107,15 +106,17 @@ if (newProject) {
 
 if (newTask) {
   newTask.addEventListener("click", () => {
-    formNewTask.classList.add("active");
+    containernewTask.classList.add("active");
   });
 }
 
 if (background) {
-  background.addEventListener("click", () => {
-    if (formNewProject) formNewProject.classList.remove("active");
-    else if (formNewTask) formNewTask.classList.remove("active");
-  });
+  background.forEach((e) =>
+    e.addEventListener("click", () => {
+      if (formNewProject) formNewProject.classList.remove("active");
+      else if (containernewTask) containernewTask.classList.remove("active");
+    })
+  );
 }
 
 if (columns.length != 0) {

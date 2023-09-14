@@ -6,18 +6,20 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please tell us your name!"],
-    maxlength: 10,
+    maxlength: [10,"maximun allowed 10 caracteres"],
+    trim: true,
+    minlength: [2, "Minimum allowed 2 caracteres"],
   },
   email: {
     type: String,
     required: [true, "Please provide your email!"],
-    unique: true,
+    unique: [true, "Account with this email address already exists."],
     lowercase: true,
   },
   password: {
     type: String,
     required: [true, "Please provide a password"],
-    minlength: [8,"Password is shorter than the minimum allowed 8 caracteres"],
+    minlength: [8, "Password is shorter than the minimum allowed 8 caracteres"],
     select: false,
   },
   passwordConfirm: {

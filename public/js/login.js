@@ -24,7 +24,6 @@ export const login = async (data, type) => {
       }, 1000);
     }
   } catch (err) {
-    console.log(err)
     showAlert("error", err.response.data.message);
     type === "login"
       ? (btn.textContent = "Login")
@@ -69,7 +68,7 @@ export const updateSettings = async (data, type) => {
       }
     }
   } catch (err) {
-    showAlert("error", err.response.data.message);
+    showAlert("error", "Account with this email address already exists.");
     document.querySelector(".update").textContent = "Update";
     document.querySelector(".update").disabled = false;
   }

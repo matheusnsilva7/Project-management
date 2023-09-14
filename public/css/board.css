@@ -168,10 +168,15 @@ label {
 .formTask {
   background-color: white;
   display: grid;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  position: absolute;
   z-index: 6;
   place-content: center;
   padding: 2rem 4rem;
   border-radius: 1rem;
+  width: 425px;
 }
 .formDiv {
   display: flex;
@@ -282,6 +287,14 @@ label {
   font-size: 1.3rem;
   text-align: center;
 }
+.createTask {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .background {
   width: 100vw;
   height: 100vh;
@@ -289,6 +302,7 @@ label {
   top: 0;
   left: 0;
   background-color: rgba(71, 71, 71, 0.4);
+  z-index: 3;
 }
 .active {
   display: grid;

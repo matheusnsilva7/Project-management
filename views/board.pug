@@ -66,5 +66,34 @@ html(lang="en")
                                 div 
                                 div 
                                 div
+                .createTask
+                    .background
+                    form.formTask.formnewtask
+                        h2 New Task
+                        label(for="taskName") Name
+                        input#taskName(type="text" name="name")
+                        label(for="taskDescription") Description
+                        textarea#taskDescription(name="description", cols="30", rows="4" )
+                        label(for="taskDate") Due date
+                        input#taskDate(type="date" name="dueDate")
+                        label difficult
+                        div.formDiv
+                            input(type="radio" id="easy" name="difficult" value="Easy" checked) 
+                            label(for="easy") Easy
+                            input(type="radio" id="medium" name="difficult" value="Medium" ) 
+                            label(for="medium") Medium
+                            input(type="radio" id="hard" name="difficult" value="Hard" )
+                            label(for="hard") Hard
+                        label Status 
+                        div.formDiv
+                            input(type="radio" id="review" name="status" value="Review" checked)
+                            label(for="review") Review
+                            input(type="radio" id="progress" name="status" value="Progress")
+                            label(for="progress") Progress
+                            input(type="radio" id="completed" name="status" value="Completed")
+                            label(for="completed") Completed
+                            input(type="radio" id="deferred" name="status" value="Deferred")
+                            label(for="deferred") Deferred
+                        button Create
         script(src="/js/bundle.js")
 
