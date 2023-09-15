@@ -5,26 +5,22 @@ const router = express.Router();
 
 router.get("/", authController.isLoggedIn, viewController.getLogging);
 router.get("/signup", authController.isLoggedIn, viewController.getSignup);
-router.get("/projects", authController.isLoggedIn, viewController.getProjects);
+router.get("/projects", authController.protect, viewController.getProjects);
 router.get("/settings", authController.protect, viewController.getSettings);
-router.get(
-  "/project/:id",
-  authController.isLoggedIn,
-  viewController.getProject
-);
+router.get("/project/:id", authController.protect, viewController.getProject);
 router.get(
   "/project/:id/tasks",
-  authController.isLoggedIn,
+  authController.protect,
   viewController.getTasks
 );
 router.get(
   "/project/:id/board",
-  authController.isLoggedIn,
+  authController.protect,
   viewController.getBoard
 );
 router.get(
   "/project/:id/project-settings",
-  authController.isLoggedIn,
+  authController.protect,
   viewController.getProjectSettings
 );
 

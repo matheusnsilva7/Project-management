@@ -5,7 +5,7 @@ const { ObjectId } = require("mongodb");
 
 exports.getLogging = (req, res) => {
   if (res.locals.user) {
-    res.redirect("/projects");
+    return res.redirect("/projects");
   }
 
   res.status(200).render("login", {
@@ -14,16 +14,16 @@ exports.getLogging = (req, res) => {
 };
 
 exports.getSignup = (req, res) => {
+  if (res.locals.user) {
+    return res.redirect("/projects");
+  }
+
   res.status(200).render("signup", {
     title: "Singup",
   });
 };
 
 exports.getProjects = async (req, res, next) => {
-  if (!res.locals.user) {
-    return next(new AppError("Please login again.", 404));
-  }
-
   const projects = await Project.find({
     $or: [
       { admin: res.locals.user.id },
@@ -38,10 +38,6 @@ exports.getProjects = async (req, res, next) => {
 };
 
 exports.getSettings = (req, res) => {
-  if (!res.locals.user) {
-    return next(new AppError("Please login again.", 404));
-  }
-
   res.status(200).render("settings", {
     title: "Settings",
   });
