@@ -53,6 +53,6 @@ html(lang="en")
                         .overall-container
                             h4 Overall Progress
                             .graphic
-                                .graphicContainer(style=`background: conic-gradient(rgba(26, 147, 46, 0.8) 0% ${(completed.length / allTask) * 100}%,#70a1e5 ${(completed.length / allTask) * 100}% ${((completed.length / allTask) * 100 ) + ((progress / allTask) * 100)}%,#f0c274 ${((completed.length/ allTask)*100 )+ ((progress/allTask)* 100)}% ${(completed.length/allTask)*100 + (progress/allTask)*100 + (review/allTask) *100}%,#ee201c ${(completed.length/allTask)*100 + (progress/allTask)*100 + (review/allTask) *100}% 100%)`)
+                                .graphicContainer(style=`background: conic-gradient(rgba(26, 147, 46, 0.8) 0% ${(completed.length / allTask) * 100}%,#70a1e5 ${(completed.length / allTask) * 100}% ${((completed.length / allTask) * 100 ) + ((progress.length / allTask) * 100)}%,#f0c274 ${((completed.length/ allTask)*100 )+ ((progress.length/allTask)* 100)}% ${(completed.length/allTask)*100 + (progress.length/allTask)*100 + (review.length/allTask) *100}%,#ee201c ${(completed.length/allTask)*100 + (progress.length/allTask)*100 + (review.length/allTask) *100}% 100%)`)
                             span.porcentage= `${((completed.length/ allTask)*100 || 0).toFixed(0)}%`
         script(src="/js/bundle.js")
