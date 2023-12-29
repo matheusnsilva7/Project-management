@@ -26,12 +26,10 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.3",
     "nodemailer": "^6.9.1",
-    "parcel": "^2.9.3",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.3",
     "pug": "^3.0.2",
     "xss-clean": "^0.1.1"
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.3"
   },
   "engines": {
     "node": ">=10.0.0"

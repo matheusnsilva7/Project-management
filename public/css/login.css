@@ -78,11 +78,11 @@ input {
   display: block;
   margin-left: 25rem;
   font-size: 1.2rem;
-  color: #7f99bd;
+  color: #7dd56f;
 }
 .button {
   border-radius: 1rem;
-  background: #7f99bd;
+  background: linear-gradient(to top left, #28b487, #7dd56f);
   display: block;
   border: none;
   color: white;
@@ -96,7 +96,7 @@ input {
   color: #505050;
 }
 .login_account a {
-  color: #7f99bd;
+  color: #7dd56f;
 }
 .title {
   font-size: 1.3rem;

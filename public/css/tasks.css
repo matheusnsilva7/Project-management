@@ -1,6 +1,5 @@
 @import "./globals.css";
 @import "./header.css";
-@import "./menu.css";
 
 .tasksContainer {
   width: 100%;
@@ -13,17 +12,16 @@
   letter-spacing: 0.2rem;
 }
 .container-tasks {
-  background-color: rgba(250, 250, 250, 0.5);
-  box-shadow: 0px 1px 5px rgba(175, 175, 175, 0.5);
+  height: 55rem;
+  border-radius: 3.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 2rem;
-  overflow: auto;
-  margin: 0 auto;
-  width: 77rem;
-  border-radius: 1.5rem;
-  height: 52rem;
+  width: 100%;
 }
 .container-tasks table {
   width: 73rem;
+  max-height: 50rem;
+  overflow: auto;
 }
 .container-tasks th,
 .container-tasks td {
@@ -49,6 +47,7 @@ tr .name {
   -webkit-line-clamp: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  text-align: center;
 }
 .Progress {
   color: #70a1e5;

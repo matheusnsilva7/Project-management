@@ -1,6 +1,5 @@
 @import "./globals.css";
 @import "./header.css";
-@import "./menu.css";
 
 input {
   width: 340px;
@@ -25,7 +24,7 @@ textarea {
 }
 
 .title {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: #505050;
   text-align: center;
 }
@@ -34,15 +33,18 @@ label {
 }
 
 .container_settings {
-  height: 52rem;
   width: 100%;
   display: grid;
   place-content: center;
 }
 .container_settings-box {
-  width: 70rem;
-  margin: 0 auto;
-  border-radius: 5px;
+  width: 100%;
+  height: 55rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 3.5rem;
+  display:grid;
+  place-content: center;
 }
 
 label {
@@ -57,12 +59,12 @@ label {
 }
 .update {
   width: 21rem;
-  background: #7f99bd;
+  background: linear-gradient(to top left, #28b487, #7dd56f);
   display: block;
   height: 40px;
   border: none;
   color: white;
-  margin: 0 auto 2.2rem;
+  margin: 0 8.2rem;
 }
 .update:first-child {
   margin: 0 auto;
@@ -79,18 +81,23 @@ label {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  justify-content: center;
 }
 .change_password h3 {
-  margin-bottom: 2rem;
+  margin: 6rem 0 2rem
 }
 .change_password input {
   background: white;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
 }
+.change_password input:last-of-type{
+  margin-left: 39rem;
+}
 .change_password form {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
 }
 .change_password input:first-child {

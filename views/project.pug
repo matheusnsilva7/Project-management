@@ -10,10 +10,10 @@ html(lang="en")
 
     body
         .container-body
-            include _menu
             .container-base
                 include _header
                 .projects
+                    h2.title= name
                     .container-information 
                         .tasks-container 
                             span.material-symbols-outlined format_align_justify
@@ -26,11 +26,11 @@ html(lang="en")
                         .tasks-container 
                             span.material-symbols-outlined.blue work
                             h4 Tasks in progress
-                            h3= progress
+                            h3= progress.length
                         .tasks-container 
                             span.material-symbols-outlined.yellow work_history                
                             h4 Tasks in review
-                            h3= review
+                            h3= review.length
                         .completed-container
                             h4 Tasks Completed
                             .table-container

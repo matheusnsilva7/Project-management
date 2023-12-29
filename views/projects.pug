@@ -10,21 +10,26 @@ html(lang="en")
 
     body
         .container-body
-            include _menu
             .container-base
                 include _header
                 .projects
                     .projects-container
+                        h3.title Projects
                         .add-card 
                             span.material-symbols-outlined add
+                               
                         each project in projects
                             a(href=`/project/${project.id}`).project-card
                                 if project.admin._id.toString() === user._id.toString()
-                                    span(class="material-symbols-outlined") group
+                                        span(class="material-symbols-outlined") group
                                 else
-                                    span(class="material-symbols-outlined").green groups
-                                h2= project.name
-                                h3= project.description
+                                        span(class="material-symbols-outlined").green groups
+                                h3.name.titleProject Name
+                                h3.description.nameProject=project.name
+                                h3.admin.titleProject Admin
+                                h3.adminName.nameProject=project.admin.name
+                                h3.members.titleProject Members
+                                h3.membersLength.nameProject=project.members.length + 1  
                         if projects.length <= 0
                             p.notFound No project found
                 .formProject 

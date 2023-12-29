@@ -64,9 +64,10 @@ exports.getProject = catchAsync(async (req, res, next) => {
     id: project._id,
     allTask: project.task.length,
     completed: project.task.filter((e) => e.status === "Completed"),
-    progress: project.task.filter((e) => e.status === "Progress").length,
-    review: project.task.filter((e) => e.status === "Review").length,
+    progress: project.task.filter((e) => e.status === "Progress"),
+    review: project.task.filter((e) => e.status === "Review"),
     role: project.admin.id === res.locals.user.id ? "admin" : "member",
+    deferred: project.task.filter((e) => e.status === "Deferred"),
   });
 });
 

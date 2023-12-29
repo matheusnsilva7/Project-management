@@ -1,6 +1,5 @@
 @import "./globals.css";
 @import "./header.css";
-@import "./menu.css";
 
 input {
   width: 340px;
@@ -57,11 +56,15 @@ label {
   width: 100%;
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .board-container {
   width: 100%;
-  height: 100%;
+  height: 55rem;
+  padding: 2rem;
+  border-radius: 3.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .containerboard {
   display: grid;
@@ -124,7 +127,7 @@ label {
   gap: 1rem;
   overflow: auto;
   padding-bottom: 1rem;
-  height: 47rem;
+  height: 44rem;
 }
 .review {
   grid-template-rows: 1rem 3rem;
@@ -150,7 +153,7 @@ label {
   color: #dfa510;
 }
 .add-task {
-  background-color: rgba(169, 201, 242, 0.7);
+  background: linear-gradient(to top left, #28b487, #7dd56f);
   display: grid;
   place-content: center;
   box-shadow: 0px 1px 2px rgba(175, 175, 175, 0.5);
@@ -199,13 +202,13 @@ label {
   border-radius: 1rem;
 }
 .formTask input[type="radio"]:checked + label {
-  background-color: rgba(169, 201, 242, 0.2);
-  color: #a9c9f2;
+  background: linear-gradient(to top left, #28b487, #7dd56f);
+  color: white;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
 .formTask button {
-  background-color: #a9c9f2;
+  background: linear-gradient(to top left, #28b487, #7dd56f);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
